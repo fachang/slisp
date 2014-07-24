@@ -1,0 +1,2 @@
+''abracadabra is (quote (quote abracadabra)), which is '(quote abracadabra).
+'(quote abracadabra) represents a two elements list, CARing it gets 'quote.

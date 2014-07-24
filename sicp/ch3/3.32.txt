@@ -1,0 +1,26 @@
+consider the following case
+
+a --|---\
+    |   |-- c
+b --|---/
+
+wire-a and wire-b are connected to the inputs of the AND gate, wire-c is
+connected to the output. when the signal of wire-a is changed via set-signal!,
+and-action-procedure would be called, which captures the new signal of wire-a,
+and the signal of wire-b, then send a procedure to the-agenda, which would set
+the signal of wire-c to AND(signal-a, signal-b) after and-gate-delay. thus the
+order of which signal change first is important, consider AND(0, 1) => AND(1, 0)
+
+case 1: a changes first
+
+    0 --|---\            1 --|---\            1 --|---\
+        |   |-- 0 =>         |   |-- 1 =>         |   |-- 0
+    1 --|---/            1 --|---/            0 --|---/
+
+case 2: b changes first
+
+    0 --|---\            0 --|---\            1 --|---\
+        |   |-- 0 =>         |   |-- 0 =>         |   |-- 0
+    1 --|---/            0 --|---/            0 --|---/
+
+in case 1, there is a glitch at the output, unlike case 2.

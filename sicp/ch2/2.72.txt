@@ -1,0 +1,40 @@
+the huffman tree for symbols with frequency 1, 2, 4 ... 2^(n-1) looks like
+
+      /\
+     /  \
+2^(n-1)  ...
+           /\
+          /  \
+         8   /\
+            /  \
+           4   /\
+              /  \
+             2    1
+
+and the procedure for encoding each symbol is as below
+
+(define (encode-symbol symbol tree)
+  (cond ((and (leaf? tree) (eq? symbol (symbol-leaf tree)))
+         nil)
+        ((memq symbol (symbols (left-branch tree)))
+         (cons 0 (encode-symbol symbol (left-branch tree))))
+        ((memq symbol (symbols (right-branch tree)))
+         (cons 1 (encode-symbol symbol (right-branch tree))))
+        (else (error "bad symbol -- ENCODE-SYMBOL" symbol))))
+
+for least frequency symbol, the procedure must calls
+
+(memq symbol (symbols (left-branch tree))
+
+to find that symbol is locate and the left-branch, thus the time complexity is
+simply Θ(n).
+
+for most frequency symbol, the procedure calls
+
+(memq symbol (symbols (right-branch tree))
+
+until it reaches the right most leaf. the number of symbols of each call is
+
+n-1, n-2, ... 2, 1
+
+thus the time complexity is 1 + 2 + ... + n-2 + n-1 = Θ(n^2).

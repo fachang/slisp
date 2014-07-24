@@ -1,0 +1,13 @@
+application order:
+    (test 0 (p))
+
+    (p) calls itself recursively, causing infinite recursion.
+
+normal order:
+    (test 0 (p))
+
+    (if (= 0 0)
+        0
+        (p))
+
+    0

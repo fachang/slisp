@@ -1,0 +1,2 @@
+louis is incorrect. assume there is no coercion procedure for t1->t1, and no
+operation for '(t1 t1), apply-generic just displays the error message.

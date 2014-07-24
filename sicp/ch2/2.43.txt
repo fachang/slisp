@@ -1,0 +1,32 @@
+time complexity of original version:
+    since (queen-cols (- k 1)) is mapped at outermost, the process tree is
+       ________
+      |  |  |  |    <---- (queen-cols (- k 1))
+      |  |  |  |
+     /\ /\  /\ /\   <---- (enum-list 1 n)
+     || ||  || ||
+
+    and the time complexity of (queens-cols k) is
+
+    T(k) = nQ(k-1)t-fileter + nQ(k-1)t-adjoin + T(k-1)
+         = ncQ(k-1) + T(k-1)
+
+time complexity of louis' version:
+    now (queen-cols (- k 1)) is in the inner map, the process tree becomes
+       ________
+      |  |  |  |    <---- (enum-list 1 n)
+      |  |  |  |
+     /\ /\  /\ /\   <---- (queen-cols (- k 1))
+     || ||  || ||
+
+    and the time complexity becomes
+
+    T(k) = nQ(k-1)t-fileter + nQ(k-1)t-adjoin + nT(k-1)
+         = ncQ(k-1) + nT(k-1)
+
+    this version is slower than the original one, since term T(k-1) becomes
+    nT(k-1). however, the complexity is hard to analysis, because it depends on
+    Q(l). for example:
+
+    T-original(3) = ncQ(2) +   ncQ(1) +   ncQ(0) +    T(0)
+    T-louis'(3)   = ncQ(2) + n^2cQ(1) + n^3cQ(0) + n^2T(0)

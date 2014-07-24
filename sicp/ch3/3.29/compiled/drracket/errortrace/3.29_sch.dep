@@ -1,0 +1,1 @@
+("6.0" ("90629f70fea9c5b5fe137dcdfe9ac55c2715cbf2" . "68126c395c54576d383aa87ee767939f3ae4363c") #"/Users/kaichen/Dropbox/program/exercise/sicp/ch3/3.29/sim-base.sch" (collects #"racket" #"runtime-config.rkt") (collects #"racket" #"main.rkt") (collects #"setup" #"infotab" #"lang" #"reader.rkt"))

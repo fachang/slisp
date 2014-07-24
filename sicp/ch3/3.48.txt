@@ -1,0 +1,17 @@
+(define (serialized-exchange account1 account2)
+  (let ((id1 (account1 'id))
+        (id2 (account2 'id))
+        (serializer1 (account1 'serializer))
+        (serializer2 (account2 'serializer)))
+    (if (> id2 id1)
+        ((serializer2 (serializer1 exchange))
+         account1
+         account2)
+        ((serializer1 (serializer2 exchange))
+         account1
+         account2))))
+
+;deadlock occurs if one of procedures holds some resources, and waits for
+;resources held by others. if every procedure shares the same acquiring order,
+;the procedure which hold the first resource would get all the resources, while
+;other procedures wait until it completes.

@@ -1,0 +1,14 @@
+let a = [am, aM], b = [bm, bM]
+then ai = (aM - am) / 2, bi = (bM - bm) / 2
+
+a + b = [am + bm, aM + bM], interval = (aM + bM - am - bm) / 2
+                                     = (aM - am) / 2 + (bM - bm) / 2
+                                     = ai + bi
+
+case for a - b is similar to a + b, since a - b = a + (-b).
+
+a * b = [min(am*bm, am*bM, aM*bm, aM*bM), Max(am*bm, am*bM, aM*bm, aM*bM)],
+interval = (M - m) / 2, which depends on the four values(am, aM, bm, bM), but
+not only ai, bi.
+
+case for a / b is similar to a / b, since a / b = a * (1 / b)

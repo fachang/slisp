@@ -1,0 +1,11 @@
+the time complextiy of T(n) is
+
+T(n) ~ T(n/2) + T(n/2) + t-cons
+     = 2T(n/2) + t-cons
+     = 2(2T(n/4) + t-cons) + t-cons
+     = 2(2(2T(n/8) + t-cons) + t-cons) + t-cons
+     = 8T(n/8) + 4t-cons + 2t-cons + t-cons
+     = (1 + 2 + 4 + 8 + ... 2^(lgn - 1))t-cons + nt-return
+     = (2^lgn - 1)t-cons + nt-return
+     = (n - 1)t-cons + nt-return
+     = Θ(n)

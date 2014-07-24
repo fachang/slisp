@@ -1,0 +1,22 @@
+the original expmod is
+
+expmod(b, n, m) = /                           1, if n = 0
+                  |   expmod(b, n/2, m)^2 mod m, if n is even
+                  \ b * expmod(b, n-1, m) mod m, if n is odd
+
+this version use the fact that (see SICP #46)
+
+xy mod m = (x mod m)(y mod m) mod m
+
+b^n mod m = (b^(n/2) mod m)^2 mod m, for n is even
+b^n mod m = (b mod m)(b^(n-1) mod m) mod m ----> b < m
+          = b*(b^(n-1) mod m) mod m
+
+thus the return value of expmod will never exceed m.
+
+but for expmod in exercise 1.25
+
+expmod(b, n, m) = b^n mod m
+
+b^n may becomes very large. in that case, the primitive operations will become
+very slow.

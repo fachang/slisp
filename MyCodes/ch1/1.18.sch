@@ -1,0 +1,26 @@
+#lang planet neil/sicp
+(define (double n)
+  (* n 2))
+
+(define (halve n)
+  (/ n 2))
+
+(define (even? n)
+  (= (remainder n 2) 0))
+
+(define (mutiply-iter a b product)
+  (cond ((= b 0) product)
+        ((even? b) (mutiply-iter (double a) (halve b) product))
+        (else (mutiply-iter a (- b 1) (+ a product)))))
+
+(define (multiply a b)
+  (mutiply-iter a b 0))
+
+(define (test a b)
+  (= (multiply a b) (* a b)))
+
+(test 5 6)
+(test 5656565 44446)
+(test 5515789 783123)
+(test 4545452 6)
+(test 5 78987897897)

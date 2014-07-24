@@ -1,0 +1,12 @@
+time complexity:
+    once Fib(k) is calculated, the value would be stored in the table. thus to
+    compute Fib(n), we only need to compute Fib(1), Fib(2) ... , Fib(n-1)
+    exactly one time. however, the time complexity of memo-fib depends on the
+    implementation of table. if the table is implemented with list, searching a
+    value take n steps, than the time complexity of memo-fib would be Θ(n^2).
+    if the table is implemented with hash table, the time complexity would be
+    Θ(n).
+
+about (memoize fib):
+    this version would not work. since fib calls itself rather than memo-fib,
+    it would not access the table.

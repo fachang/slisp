@@ -1,0 +1,45 @@
+#!/usr/bin/env racket
+#lang planet neil/sicp
+
+(define (call-the-cops)
+  (display "the cops is coming")
+  (newline))
+
+(define (make-account balance password)
+  (define cnt 0)
+  (define (withdraw amount)
+    (if (>= balance amount)
+        (begin (set! balance (- balance amount))
+               balance)
+        "Insufficient funds"))
+  (define (deposit amount)
+    (set! balance (+ balance amount))
+    balance)
+  (define (dispatch p m)
+    (if (not (eq? p password))
+        (begin (set! cnt (+ cnt 1))
+               (if (> cnt 7) (call-the-cops))
+               (lambda x "Incorrect password"))
+        (begin (set! cnt 0)
+               (cond ((eq? m 'withdraw) withdraw)
+                     ((eq? m 'deposit) deposit)
+                     (else "Unknown request -- MAKE-ACCOUNT"
+                           m)))))
+  dispatch)
+
+;test
+(define acc (make-account 600 'secret))
+
+((acc 'secret 'deposit) 100)
+((acc 'xxxxxx 'deposit) 100)
+((acc 'secret 'deposit) 100)
+((acc 'xxxxxx 'deposit) 100)
+((acc 'secret 'deposit) 100)
+((acc 'xxxxxx 'deposit) 100)
+((acc 'xxxxxx 'deposit) 100)
+((acc 'xxxxxx 'deposit) 100)
+((acc 'xxxxxx 'deposit) 100)
+((acc 'xxxxxx 'deposit) 100)
+((acc 'xxxxxx 'deposit) 100)
+((acc 'xxxxxx 'deposit) 100)
+((acc 'xxxxxx 'deposit) 100)

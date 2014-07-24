@@ -1,0 +1,3 @@
+let A = a ± a*at, B = b ± b*bt, then
+A * B = (a ± a*at)(b ± b*bt) = ab ± a*b*bt ± a*b*at ± a*b*at*bt
+      ~ ab ± ab*(at + bt) ----> the new tolerance t becomes at + bt

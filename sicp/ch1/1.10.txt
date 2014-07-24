@@ -1,0 +1,30 @@
+A(x, y) = /                 0, if y = 0
+          |                2y, if x = 0
+          |                 2, if y = 1
+          \ A(x-1, A(x, y-1)), otherwise
+
+f(n) = A(0, n) = /  0, if n = 0
+                 \ 2n, otherwise ----> f(n) = 2n, for n(Z+
+
+
+g(n) = A(1, n) = /               0, if n = 0
+                 |               2, if n = 1
+                 \ A(0, A(1, n-1)), otherwise
+
+for n > 1:
+g(n) = A(0, A(1, n-1)) = f(g(n-1))
+     = f(f(g(n-2))) = f(f(..g(1)..))
+                      \__ #f:n-1 __/
+     = f(f(..2..))  = 2^(n-1) * 2 = 2^n ----> g(n) = 2^n, for n(Z+
+
+
+h(n) = A(2, n) = /               0, if n = 0
+                 |               2, if n = 1
+                 \ A(1, A(2, n-1)), otherwise
+
+for n > 1:
+h(n) = A(1, A(2, n-1)) = g(h(n-1))
+     = g(g(h(n-2))) = g(g(..h(1)..))
+                      \__ #g:n-1 __/
+     = g(g(..2..)) = 2^2^2^..^2 = 2^..^2 ----> h(n) = 2^..^2, for n(Z+
+                                  \#2:n/              \#2:n/

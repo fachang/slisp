@@ -1,0 +1,10 @@
+doing so makes +, * become data types. currently, the only operation
+is deriv, and the operation table is as below:
+
+       |          + |             *
+------------------------------------
+ deriv |  deriv-sum | deriv-product
+
+we can't assimilate number? and same-variable? into the data-directed
+dispatch because originally, number or variable data does not have their
+own tag.

@@ -1,0 +1,2 @@
+it is unnecessary to serialize access to bank balance, since it will not modify
+the bank balance.

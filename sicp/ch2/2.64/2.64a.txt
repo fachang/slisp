@@ -1,0 +1,45 @@
+in (partial-tree elts n), where
+
+ (e1 e2 e3 e4 e5 ... ek-2 ek-1 ek)
+  \_____n___...___/
+
+first find the left tree, that is, (car (partial-tree elts left-size))
+
+ (e1 e2 e3 e4 e5 ... ek-2 ek-1 ek)
+  \_____n___...___/
+  \left/
+
+now (cdr (partial-tree elts left-size)) becomes
+
+ (e1 e2 e3 e4 e5 ... ek-2 ek-1 ek)
+  \_____n___...___/
+  \left/\___..._(cdr ...)_______/ ----> non-left-elts
+
+now find the pivot and the right tree, that is
+
+ (e1 e2 e3 e4 e5 ... ek-2 ek-1 ek)
+  \_____n___...___/
+  \left/\___..._(cdr ...)_______/
+        | \_right_/
+      pivot
+
+pivot is just (car non-left-elts), and the right tree could be found by calling
+(partial-tree (cdr non-left-elts right-size)). the car of that call is the right
+tree, and the cdr is the remaining elements
+
+ (e1 e2 e3 e4 e5 ... ek-2 ek-1 ek)
+  \_____n___...___/
+  \left/\___..._(cdr ...)_______/
+        | \_right_/\_remaining__/ ----> remaining-elts
+      pivot ----> this-entry
+
+thus the result of (partial-tree elts n) is
+
+ (cons (make-tree this-entry left-tree right-tree)
+       remaining-elts)
+
+the procedure would call itself recurively until n equals to zero, which returns
+(nil elts), coressponding every nil node in the tree.
+
+in short, the procedure first produce left tree and right tree, then combines
+left tree, pivot and right tree.

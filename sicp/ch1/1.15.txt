@@ -1,0 +1,28 @@
+times of procedure p applied when (sine 12.15) is evaluated:
+    each time sine recursively calls itself, if a is bigger than 0.1, procedure
+    p is applied on a/3, otherwise a is returned. thus the times of procedure p 
+    is applied is
+
+    a*(1/3)^n < 1/10
+    log(1/3, a) + n > log(1/3, 1/10)
+    n > log(1/3, 1/(10a))
+    n > log(3, 10a)
+
+    log(3, 10 * 12.15) = 4.37 ----> choose n = 5, 5 times.
+
+orders of growth of the space and the number of steps:
+    space:
+    since sine is a recursive process, that is
+    
+    (sina a)
+    (p (sine a/3))
+    (p (p (sine a/9)))
+    ...
+    
+    the order of growth of space is Θ(log(a)).
+    
+
+    steps:
+    the number of steps is the times of procedure p is applied plus one, which
+    sine simply returns a, thus the order of growth of the number of steps is
+    Θ(log(a)).

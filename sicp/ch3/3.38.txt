@@ -1,0 +1,28 @@
+part a:
+    Peter -> Paul  -> Mary  : 45
+    Peter -> Mary  -> Paul  : 35
+    Paul  -> Peter -> Mary  : 45
+    Paul  -> Mary  -> Peter : 50
+    Mary  -> Peter -> Paul  : 40
+    Mary  -> Paul  -> Peter : 40
+
+part b:
+                  /-----\
+       /----------| 100 |-------|-------------------\
+       |          \-----/       |                   |
+  Mary access 100               |                   |
+       |                   Paul access 100          |
+       |                        |             Peter access 100
+       |                        |               new value 110
+   new value 50                 |                   |
+       |          /-----\   new value 80            |
+       |          |  80 |<--set value 80            |
+       |          \-----/                           |
+       |          /-----\                           |
+   set value 50-->|  50 |                           |
+                  \-----/                           |
+                  /-----\                           |
+                  | 110 |<----------------------set value 110
+                  \-----/
+
+    final value: 110

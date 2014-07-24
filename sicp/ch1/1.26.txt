@@ -1,0 +1,21 @@
+the correct process tree should looks like
+
+n -- n/2 -- n/4 -- ...
+
+thus the order of growth is Θ(log(n)).
+
+but in exercise 1.26, writing (square a) as (* a a) will make the tree becomes
+           n
+          / \
+         /   \
+      n/2     n/2
+      / \     / \
+     /   \   /   \
+  n/4  n/4   n/4  n/4
+          ...
+
+assume n = 2^k, than the tree height is log(n), and the number of nodes is
+
+1 + 2 + 4 + ... + 1*2^log(n) = (2^log(n) - 1)/(2 - 1) = n - 1
+
+thus the order of growth becomes Θ(n) now.

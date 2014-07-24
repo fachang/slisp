@@ -1,0 +1,9 @@
+the operation table now becomes:
+
+   |         deriv
+-------------------
+ + |     deriv-sum
+-------------------
+ * | deriv-product
+
+ the (put <op> <type> <item>) in each install-deriv-* must be changed.

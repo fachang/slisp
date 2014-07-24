@@ -1,0 +1,19 @@
+huffman tree of case n = 5:
+    1 2 4 8 16
+
+        /\
+       /  \
+     16   /\
+         /  \
+        8   /\
+           /  \
+          4   /\
+             /  \
+            2    1
+
+huffman tree of case n = 10:
+    similar to case n = 5.
+
+bits required:
+    for  most frequency symbol:     1 bit
+    for least frequency symbol: n - 1 bits

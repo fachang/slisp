@@ -1,0 +1,25 @@
+if (set! x (* x x)) completes, x becomes 100
+if (set! x (* x x x)) completes, x becomes 1000
+
+assume (set! (* x x)) completes after (set! x (* x x x)), depends on whether
+(set! x (* x x x)) is completed or not, each reference to x may be 10 or 1000.
+1. 10 * 10 = 1e2
+2. 10 * 1000 = 1e4
+3. 1000 * 1000 = 1e6
+
+assume (set! (* x x x)) completes after (set! x (* x x)), depends on whether
+(set! x (* x x)) is completed or not, each reference to x may be 10 or 100.
+1. 10 * 10 * 10 = 1e3
+2. 10 * 10 * 100 = 1e4
+3. 10 * 100 * 100 = 1e5
+4. 100 * 100 * 100 = 1e6
+
+totally five possibilities (1e2, 1e3, 1e4, 1e5, 1e6).
+
+if the two procedures are serialized, either (set! x (* x x)) occurs entirely
+before (set! x (* x x x)) or (set! x (* x x x)) occurs entirely before
+(set! x (* x x)).
+1. 100 * 100 * 100 = 1e6
+2. 1000 * 1000 = 1e6
+
+only one possibility remains.

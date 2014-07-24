@@ -1,0 +1,33 @@
+orders of growth of the space and the number of steps:
+    space:
+    let n = amount and m = kinds-of-coins, then the order of growth of space is
+    the maximum depth of the process tree, which is Θ(n + m) = Θ(n).
+
+
+    steps:
+    first assume there is only one kind of coins, then the number of steps is
+
+    2n + 1 = Θ(n)
+
+    add one more kind of coins(now we have 1, 5).there would be (cc n 2),
+    (cc n-5 2), (cc n-10 2), ...in the process tree, each calls (cc amount 1).
+
+        15 2
+         / \
+        /   \
+    15 1     10 2
+              / \
+             /   \
+          10 1    5 2
+                  / \
+                 /   \
+              5 1     0 2
+
+    assume n=5k, then the number of steps becomes
+
+             5/n
+    1 + 5/n + Σ (2(5i) + 1) = Θ(n^2)
+             i=1
+
+    adding more kinds of coins is similar. the number of steps is
+    Θ(n^m) = Θ(n^5).

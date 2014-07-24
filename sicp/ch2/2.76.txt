@@ -1,0 +1,41 @@
+regardless of which style is in use, adding a new type means: 1)implement new
+constructor and 2)implement all operations. adding a new operation means:
+implement new operation for each existing types.
+
+generic operations with explicit dispatch:
+    add new types:
+    modify all generic operations, add a new clause in the dispatcher for
+    the new type.
+
+    add new operations:
+    add a new generic operation.
+
+data-directed style:
+    *assume the program is organized in "one packege per one type" way.
+
+    add new types:
+    add a new package that install all operations for the new type.
+
+    add new operations:
+    1. modify the original package, so they could install the new operation.
+    or, to be lazy:
+    2. add a new package that install the new operation for each type.
+    but the second method would make the program "hard to maintain".
+
+message passing style:
+    add new types:
+    add a new constructor.
+
+    add new operations:
+    modify all data constructors, add a new clause in the dispatcher for
+    the new operation.
+
+strategy to choose:
+    for systems in which new type must been added:
+    choose message passing style, or data-directed style (with "one package per
+    one type").
+
+    for systems in which new operation must been added:
+    choose data-directed style (with "one package per one operation"),generic
+    operations with explicit dispatch is NOT preferred since an extra
+    generic operation is required.

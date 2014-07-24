@@ -1,0 +1,2 @@
+serialized-exchange calls withdraw procedure, which is serialized. however, it
+will wait until serialized-exchange completes, this causes deadlock.

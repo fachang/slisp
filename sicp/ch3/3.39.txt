@@ -1,0 +1,8 @@
+let action A to be (lambda () (* x x)), action B to be (set! x square-of-x)
+, and action C to be (set! x (+ x 1))
+
+since action B must occur after action A, there are only three possibilities:
+
+ABC -> x is first set to 100, then add by one, 101
+ACB -> x is set to 100, action C is simply ignored, 100
+CAB -> x is first add by one, then set to 121, 121

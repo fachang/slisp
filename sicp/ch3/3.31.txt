@@ -1,0 +1,3 @@
+the immediate procedure call initialize the output signal. without the immediate
+procedure call, the output signal of a gate would not be correct until any input
+signal of the gate changes.
